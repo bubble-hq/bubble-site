@@ -44,8 +44,8 @@ function MailoIcon({ className }) {
         animate={{ pathLength: [0, 1] }}
         transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
       />
-      <motion.circle cx="48" cy="18" r="6" fill="currentColor"
-        animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
+      <circle cx="50" cy="18" r="5" fill="#ef4444" />
+      <circle cx="50" cy="18" r="2.5" fill="#fca5a5" />
     </svg>
   );
 }
@@ -98,11 +98,11 @@ function TeamCard({ member, index }) {
     >
       {/* Glow */}
       <div
-        className="absolute -inset-1 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl"
+        className="absolute -inset-1 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 blur-2xl"
         style={{ background: member.glowColor }}
       />
 
-      <div className="relative bg-gradient-to-b from-gray-900/80 to-gray-950/80 border border-gray-800/50 rounded-3xl overflow-hidden hover:border-gray-700/50 transition-all duration-500 backdrop-blur-sm h-full">
+      <div className="relative bg-gradient-to-b from-gray-900/80 to-gray-950/80 border border-gray-800/50 rounded-3xl overflow-hidden hover:border-gray-700/50 transition-all duration-200 backdrop-blur-sm h-full">
         {/* Top accent bar */}
         <div className={`h-1 w-full bg-gradient-to-r ${member.color}`} />
 

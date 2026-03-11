@@ -113,7 +113,7 @@ export default function Vibe() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
               whileHover={{ y: -4 }}
-              className="group bg-gradient-to-b from-gray-900/50 to-gray-950/50 border border-gray-800/40 rounded-2xl p-8 hover:border-purple-500/20 transition-all duration-500 backdrop-blur-sm"
+              className="group bg-gradient-to-b from-gray-900/50 to-gray-950/50 border border-gray-800/40 rounded-2xl p-8 hover:border-purple-500/20 transition-all duration-200 backdrop-blur-sm"
             >
               <div className="text-purple-400 mb-5 group-hover:text-purple-300 transition-colors">
                 <PrincipleIcon type={principle.icon} />

@@ -129,10 +129,10 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 whileHover={{ y: -6 }}
-                className={`group relative bg-gradient-to-b from-gray-900/60 to-gray-950/60 border border-gray-800/50 rounded-2xl p-8 ${colors.border} transition-all duration-500 overflow-hidden backdrop-blur-sm`}
+                className={`group relative bg-gradient-to-b from-gray-900/60 to-gray-950/60 border border-gray-800/50 rounded-2xl p-8 ${colors.border} transition-all duration-200 overflow-hidden backdrop-blur-sm`}
               >
                 {/* Hover glow */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${colors.glow} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${colors.glow} opacity-0 group-hover:opacity-100 transition-opacity duration-200`} />
 
                 <div className="relative">
                   <div className="flex items-start justify-between mb-6">
