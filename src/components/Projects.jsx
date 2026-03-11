@@ -127,7 +127,7 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
                 whileHover={{ y: -6 }}
                 className={`group relative bg-gradient-to-b from-gray-900/60 to-gray-950/60 border border-gray-800/50 rounded-2xl p-8 ${colors.border} transition-all duration-500 overflow-hidden backdrop-blur-sm`}
               >

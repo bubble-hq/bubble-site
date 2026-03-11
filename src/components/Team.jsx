@@ -22,19 +22,15 @@ function DaxIcon({ className }) {
 function RayIcon({ className }) {
   return (
     <svg className={className} viewBox="0 0 64 64" fill="none">
-      {/* Wrench / Gear hybrid */}
-      <motion.path
-        d="M32 8 L38 18 L48 18 L40 26 L44 36 L32 30 L20 36 L24 26 L16 18 L26 18 Z"
-        stroke="currentColor" strokeWidth="2" fill="none"
-        animate={{ rotate: [0, 360] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        style={{ transformOrigin: "center" }}
-      />
-      <motion.rect x="28" y="34" width="8" height="22" rx="2" stroke="currentColor" strokeWidth="2"
-        animate={{ scaleY: [1, 1.05, 1] }} transition={{ duration: 2, repeat: Infinity }}
-        style={{ transformOrigin: "center" }}
-      />
-      <circle cx="32" cy="22" r="4" fill="currentColor" />
+      {/* Terminal / Code */}
+      <rect x="6" y="10" width="52" height="44" rx="4" stroke="currentColor" strokeWidth="2" />
+      <line x1="6" y1="20" x2="58" y2="20" stroke="currentColor" strokeWidth="2" />
+      <circle cx="14" cy="15" r="2" fill="currentColor" />
+      <circle cx="22" cy="15" r="2" fill="currentColor" />
+      <motion.path d="M16 30 L24 36 L16 42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"
+        animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity }} />
+      <motion.line x1="30" y1="38" x2="46" y2="38" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
+        animate={{ x2: [36, 46, 36] }} transition={{ duration: 3, repeat: Infinity }} />
     </svg>
   );
 }
@@ -42,16 +38,14 @@ function RayIcon({ className }) {
 function MailoIcon({ className }) {
   return (
     <svg className={className} viewBox="0 0 64 64" fill="none">
-      {/* Envelope with signal waves */}
+      {/* Envelope */}
       <rect x="8" y="16" width="48" height="32" rx="4" stroke="currentColor" strokeWidth="2" />
       <motion.path d="M8 16 L32 36 L56 16" stroke="currentColor" strokeWidth="2" fill="none"
         animate={{ pathLength: [0, 1] }}
         transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
       />
-      <motion.path d="M50 8 Q58 8 58 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none"
-        animate={{ opacity: [0, 1, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 0 }} />
-      <motion.path d="M52 12 Q62 12 62 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none"
-        animate={{ opacity: [0, 1, 0] }} transition={{ duration: 2, repeat: Infinity, delay: 0.3 }} />
+      <motion.circle cx="48" cy="18" r="6" fill="currentColor"
+        animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
     </svg>
   );
 }
@@ -108,13 +102,14 @@ function TeamCard({ member, index }) {
         style={{ background: member.glowColor }}
       />
 
-      <div className="relative bg-gradient-to-b from-gray-900/80 to-gray-950/80 border border-gray-800/50 rounded-3xl p-8 hover:border-gray-700/50 transition-all duration-500 backdrop-blur-sm h-full">
+      <div className="relative bg-gradient-to-b from-gray-900/80 to-gray-950/80 border border-gray-800/50 rounded-3xl overflow-hidden hover:border-gray-700/50 transition-all duration-500 backdrop-blur-sm h-full">
+        {/* Top accent bar */}
+        <div className={`h-1 w-full bg-gradient-to-r ${member.color}`} />
+
+        <div className="p-8">
         {/* Icon */}
-        <div className={`w-16 h-16 mb-6 text-transparent bg-gradient-to-br ${member.color} bg-clip-text`}>
-          <Icon className={`w-16 h-16 bg-gradient-to-br ${member.color}`} style={{ color: 'currentColor' }} />
-        </div>
-        <div className={`w-16 h-16 mb-6`}>
-          <Icon className={`w-full h-full`} style={{ color: member.glowColor.replace('0.15', '0.8') }} />
+        <div className="w-16 h-16 mb-6">
+          <Icon className="w-full h-full" style={{ color: member.glowColor.replace('0.15', '0.8') }} />
         </div>
 
         {/* Name & Role */}
@@ -141,6 +136,7 @@ function TeamCard({ member, index }) {
         {/* Quote */}
         <div className="pt-4 border-t border-gray-800/50">
           <p className="text-gray-500 text-sm italic">"{member.quote}"</p>
+        </div>
         </div>
       </div>
     </motion.div>

@@ -140,22 +140,14 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <h1 className="text-8xl md:text-[10rem] font-black tracking-tighter leading-none mb-8">
+          <h1 className="text-7xl md:text-9xl lg:text-[10rem] font-black tracking-tighter leading-none mb-8 whitespace-nowrap">
             <motion.span
-              className="block bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-white"
+              className="bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-purple-400"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              BUB
-            </motion.span>
-            <motion.span
-              className="block bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-purple-600"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              BLE
+              BUBBLE
             </motion.span>
           </h1>
 
