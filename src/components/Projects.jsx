@@ -128,7 +128,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                whileHover={{ y: -6 }}
+                whileHover={{ y: -6, transition: { duration: 0.15 } }}
                 className={`group relative bg-gradient-to-b from-gray-900/60 to-gray-950/60 border border-gray-800/50 rounded-2xl p-8 ${colors.border} transition-all duration-200 overflow-hidden backdrop-blur-sm`}
               >
                 {/* Hover glow */}

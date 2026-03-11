@@ -44,8 +44,6 @@ function MailoIcon({ className }) {
         animate={{ pathLength: [0, 1] }}
         transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
       />
-      <circle cx="50" cy="18" r="5" fill="#ef4444" />
-      <circle cx="50" cy="18" r="2.5" fill="#fca5a5" />
     </svg>
   );
 }
