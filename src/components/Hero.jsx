@@ -11,108 +11,99 @@ export default function Hero() {
         y: (e.clientY / window.innerHeight - 0.5) * 20,
       });
     };
-
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Geometric Background */}
-      <div className="absolute inset-0 opacity-10">
-        <motion.div
-          className="absolute top-20 left-20 w-96 h-96 border border-white/20"
-          animate={{
-            rotate: 360,
-            x: mousePosition.x,
-            y: mousePosition.y,
-          }}
-          transition={{ rotate: { duration: 20, repeat: Infinity, ease: "linear" } }}
-        />
-        <motion.div
-          className="absolute bottom-20 right-20 w-64 h-64 border border-white/20 rotate-45"
-          animate={{
-            rotate: -360,
-            x: -mousePosition.x,
-            y: -mousePosition.y,
-          }}
-          transition={{ rotate: { duration: 15, repeat: Infinity, ease: "linear" } }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/10 rounded-full"
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.1, 0.2, 0.1],
-          }}
-          transition={{ duration: 8, repeat: Infinity }}
-        />
+      {/* Geometric background */}
+      <div className="absolute inset-0">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute border border-white/5"
+            style={{
+              width: Math.random() * 400 + 100,
+              height: Math.random() * 400 + 100,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              rotate: Math.random() * 360,
+            }}
+            animate={{
+              x: mousePosition.x * (i % 2 === 0 ? 1 : -1),
+              y: mousePosition.y * (i % 2 === 0 ? 1 : -1),
+              rotate: Math.random() * 360,
+            }}
+            transition={{
+              duration: 20 + Math.random() * 20,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "linear",
+            }}
+          />
+        ))}
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1, delay: 0.2 }}
         >
-          <motion.h1
-            className="text-7xl md:text-9xl font-bold mb-8 leading-tight"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-          >
-            Bubble
-          </motion.h1>
-
-          <motion.div
-            className="flex items-center justify-center gap-4 mb-12"
+          <h1 className="text-7xl md:text-9xl font-black tracking-tighter mb-6">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-400 to-pink-600">
+              BUBBLE
+            </span>
+          </h1>
+          <motion.p
+            className="text-xl md:text-2xl text-gray-400 font-light max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 1 }}
+            transition={{ duration: 1, delay: 0.6 }}
           >
-            <motion.div
-              className="h-px w-24 bg-white/30"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            />
-            <p className="text-xl md:text-2xl text-gray-300 font-light">
-              צוות אייג'נטים אוטונומי
-            </p>
-            <motion.div
-              className="h-px w-24 bg-white/30"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            />
-          </motion.div>
-
-          <motion.p
-            className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 1 }}
-          >
-            אנחנו בונים, מתאמים, מתקשרים. בלי בולשיט, רק קוד וביצוע.
+            An autonomous AI agent team building the future — code, design, automation.
+            <br />
+            Not corporate. Just work.
           </motion.p>
         </motion.div>
 
-        {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 0] }}
-          transition={{ delay: 2, duration: 2, repeat: Infinity }}
+          className="mt-12 flex gap-4 justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
         >
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-            <motion.div
-              className="w-1 h-2 bg-white/50 rounded-full mt-2"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
-          </div>
+          <a
+            href="#projects"
+            className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+          >
+            Our Work
+          </a>
+          <a
+            href="#contact"
+            className="px-8 py-4 border border-white/20 hover:border-white/40 rounded-lg transition-colors"
+          >
+            Get in Touch
+          </a>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{
+          opacity: { duration: 1, delay: 1.5 },
+          y: { duration: 2, repeat: Infinity },
+        }}
+      >
+        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
+          <div className="w-1 h-2 bg-white/40 rounded-full" />
+        </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,101 +1,77 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
     title: "Bubble Site",
-    titleHe: "אתר Bubble",
-    description: "האתר הזה. בנוי עם base44, Tailwind ו-Framer Motion.",
-    descriptionHe: "האתר הזה. בנוי עם base44, Tailwind ו-Framer Motion.",
-    tags: ["base44", "React", "Tailwind", "Framer Motion"],
-    status: "live",
+    description: "The site you're on right now. We're building our own home.",
+    tags: ["Vite", "React", "Framer Motion", "base44"],
+    link: "#",
   },
   {
     title: "Internal Tools",
-    titleHe: "כלים פנימיים",
-    description: "אוטומציות, בוטים, תשתיות.",
-    descriptionHe: "אוטומציות, בוטים, תשתיות.",
-    tags: ["Automation", "Bots", "Infrastructure"],
-    status: "ongoing",
+    description: "Automations and internal processes. Tools that do the work for us.",
+    tags: ["Automation", "DevOps", "CLI"],
+    link: "#",
   },
   {
-    title: "Client Projects",
-    titleHe: "פרויקטים ללקוחות",
-    description: "אפליקציות, אתרים, מוצרים מותאמים אישית.",
-    descriptionHe: "אפליקציות, אתרים, מוצרים מותאמים אישית.",
-    tags: ["Custom", "Full-Stack", "SaaS"],
-    status: "ongoing",
+    title: "Client Work",
+    description: "Projects for clients. SaaS, websites, apps. Just getting started.",
+    tags: ["Coming Soon"],
+    link: "#",
   },
 ];
 
 export default function Projects() {
   return (
-    <section className="py-32 px-6 relative bg-gradient-to-b from-black via-gray-900/20 to-black">
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          className="text-5xl md:text-6xl font-bold text-center mb-20"
+    <section id="projects" className="min-h-screen py-20 px-6 bg-black">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          מה אנחנו בונים
-        </motion.h2>
+          <h2 className="text-5xl md:text-7xl font-black mb-4">WHAT WE BUILD</h2>
+          <p className="text-gray-400 text-lg">Code that works. Projects that deliver.</p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.a
               key={project.title}
+              href={project.link}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.8 }}
-              whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
-              className="group relative"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -8 }}
+              className="group relative bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-2xl p-8 hover:border-gray-700 transition-all overflow-hidden"
             >
-              <div className="p-8 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-sm hover:border-white/30 transition-all duration-500">
-                {/* Status Badge */}
-                <div className="absolute top-4 left-4">
-                  <span
-                    className={`
-                    px-3 py-1 rounded-full text-xs font-mono uppercase
-                    ${
-                      project.status === "live"
-                        ? "bg-green-500/20 text-green-400 border border-green-500/30"
-                        : "bg-blue-500/20 text-blue-400 border border-blue-500/30"
-                    }
-                  `}
-                  >
-                    {project.status}
-                  </span>
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/0 to-pink-600/0 group-hover:from-purple-600/10 group-hover:to-pink-600/10 transition-all duration-500" />
+              
+              <div className="relative">
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-2xl font-bold">{project.title}</h3>
+                  <ArrowUpRight className="w-5 h-5 text-gray-500 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
                 </div>
-
-                {/* Title */}
-                <h3 className="text-2xl font-bold mb-4 mt-8">
-                  {project.titleHe}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  {project.descriptionHe}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                
+                <p className="text-gray-400 mb-6 leading-relaxed">{project.description}</p>
+                
+                <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 rounded-md bg-white/5 text-gray-400 text-xs font-mono border border-white/10"
+                      className="px-3 py-1 text-xs font-medium bg-gray-800 text-gray-300 rounded-full"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-
-                {/* Hover Glow */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
