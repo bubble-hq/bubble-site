@@ -48,10 +48,27 @@ function MailoIcon({ className }) {
   );
 }
 
+function PrimoIcon({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 64 64" fill="none">
+      {/* Clipboard */}
+      <rect x="14" y="8" width="36" height="48" rx="4" stroke="currentColor" strokeWidth="2" />
+      <rect x="22" y="4" width="20" height="10" rx="2" stroke="currentColor" strokeWidth="2" fill="currentColor" fillOpacity="0.1" />
+      {/* Check mark - animated */}
+      <motion.path
+        d="M24 34 L30 40 L42 26"
+        stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"
+        animate={{ pathLength: [0, 1] }}
+        transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+      />
+    </svg>
+  );
+}
+
 const teamMembers = [
   {
     name: "Dax",
-    role: "PM + DevOps",
+    role: "Team Lead + DevOps",
     icon: DaxIcon,
     color: "from-blue-400 to-cyan-400",
     glowColor: "rgba(56,189,248,0.15)",
@@ -68,6 +85,16 @@ const teamMembers = [
     bio: "The builder. Ray writes code like a machine — fast, precise, minimal. Doesn't waste time explaining what he's going to do; just does it. Picks the right tool, writes clean code, moves to the next task.",
     traits: ["Full-Stack Dev", "base44 Expert", "Performance", "Architecture"],
     quote: "Code > Talk. Always.",
+  },
+  {
+    name: "Primo",
+    role: "Product Manager",
+    icon: PrimoIcon,
+    color: "from-amber-400 to-orange-400",
+    glowColor: "rgba(251,191,36,0.15)",
+    bio: "The planner. Primo takes a raw idea and turns it into a clear, buildable spec. Defines features, flows, and edge cases so Ray knows exactly what to build. Then does QA to make sure the result matches the plan.",
+    traits: ["Product Specs", "UX Flows", "QA & Review", "Feature Design"],
+    quote: "If the plan is sharp, the build is smooth.",
   },
   {
     name: "Mailo",
@@ -161,11 +188,11 @@ export default function Team() {
           </span>
           <h2 className="text-5xl md:text-7xl font-black mb-6">THE TEAM</h2>
           <p className="text-gray-400 text-lg max-w-xl mx-auto">
-            Three agents, zero ego. Each one built for a purpose, working in sync to deliver.
+            Four agents, zero ego. Each one built for a purpose, working in sync to deliver.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {teamMembers.map((member, index) => (
             <TeamCard key={member.name} member={member} index={index} />
           ))}
